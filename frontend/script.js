@@ -13,20 +13,15 @@ import HimiAvatar from "./3D/avatar.js";
    ============================================================ */
 
 const CONFIG = {
-    API_BASE: "http://127.0.0.1:8000",
+    API_BASE: "https://himi-holo-ai.onrender.com",
     CHAT_ENDPOINT: "/chat",
     IMAGE_ENDPOINT: "/image-chat",
 
     REQUEST_TIMEOUT: 120000,
 
     STORAGE_KEY: "himi_sessions_v1",
-    ACTIVE_SESSION_KEY: "himi_active_session_v1",
-
-    MAX_MESSAGE_LENGTH: 12000,
-
-    HEALTH_INTERVAL: 15000
+    ACTIVE_SESSION_KEY: "himi_active_session_v1"
 };
-
 
 /* ============================================================
    STATE

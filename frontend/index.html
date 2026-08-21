@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#02080f"
+    >
+
+    <meta
+        name="description"
+        content="HIMI HOLO AI — Holographic Artificial Intelligence System"
+    >
+
+    <title>HIMI HOLO AI</title>
+
+
+    <!-- =====================================================
+         FONTS
+         ===================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         MAIN CSS
+         ===================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="./style.css"
+    >
+
+
+    <!-- =====================================================
+         THREE.JS
+         ===================================================== -->
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js">
+    </script>
+
+</head>
+
+
+<body>
+
+
+<div
+    id="app"
+    class="himi-app"
+>
+
+
+    <!-- =====================================================
+         BACKGROUND
+         ===================================================== -->
+
+    <div
+        class="background-grid"
+        aria-hidden="true">
+    </div>
+
+    <div
+        class="background-glow background-glow-1"
+        aria-hidden="true">
+    </div>
+
+    <div
+        class="background-glow background-glow-2"
+        aria-hidden="true">
+    </div>
+
+    <div
+        class="background-scanlines"
+        aria-hidden="true">
+    </div>
+
+
+    <!-- =====================================================
+         TOP BAR
+         ===================================================== -->
+
+    <header
+        class="topbar"
+        id="topbar"
+    >
+
+        <div class="brand">
+
+            <div
+                class="brand-mark"
+                id="brandMark"
+            >
+                H
+            </div>
+
+
+            <div class="brand-text">
+
+                <div class="brand-title">
+                    HIMI
+                    <span>HOLO AI</span>
+                </div>
+
+                <div class="brand-subtitle">
+                    HOLOGRAPHIC INTELLIGENCE SYSTEM
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="system-status"
+            id="systemStatus"
+        >
+
+            <span
+                class="status-dot"
+                id="systemStatusDot">
+            </span>
+
+            <span id="systemStatusText">
+                SYSTEM ONLINE
+            </span>
+
+            <span class="status-divider">
+                |
+            </span>
+
+            <span
+                id="systemClock"
+                class="system-clock"
+            >
+                00:00:00
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN INTERFACE
+         ===================================================== -->
+
+    <main
+        class="main-layout"
+        id="mainLayout"
+    >
+
+
+        <!-- =================================================
+             LEFT PANEL
+             ================================================= -->
+
+        <aside
+            class="left-panel"
+            id="leftPanel"
+        >
+
+
+            <!-- ================= SYSTEM ================= -->
+
+            <section
+                class="glass-card system-card"
+                id="systemCard"
+            >
+
+                <div class="card-label">
+                    SYSTEM
+                </div>
+
+                <h2 class="card-title">
+                    Neural Core
+                </h2>
+
+
+                <div
+                    class="online-state"
+                    id="onlineState"
+                >
+
+                    <span class="mini-dot"></span>
+
+                    <span id="onlineStateText">
+                        ONLINE
+                    </span>
+
+                </div>
+
+
+                <div class="system-stats">
+
+
+                    <div class="system-stat">
+
+                        <span class="stat-label">
+                            AI CORE
+                        </span>
+
+                        <strong id="aiCoreStatus">
+                            READY
+                        </strong>
+
+                    </div>
+
+
+                    <div class="system-stat">
+
+                        <span class="stat-label">
+                            MEMORY
+                        </span>
+
+                        <strong id="memoryStatus">
+                            SESSION
+                        </strong>
+
+                    </div>
+
+
+                    <div class="system-stat">
+
+                        <span class="stat-label">
+                            VOICE
+                        </span>
+
+                        <strong id="voiceStatus">
+                            STANDBY
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= AVATAR ================= -->
+
+            <section
+                class="glass-card avatar-card"
+                id="avatarCard"
+            >
+
+                <div class="card-label">
+                    AVATAR
+                </div>
+
+                <h2 class="card-title">
+                    Hologram
+                </h2>
+
+
+                <div
+                    class="avatar-state"
+                    id="avatarState"
+                >
+
+                    <div
+                        class="avatar-state-core"
+                        id="avatarStateCore"
+                    >
+
+                        <div
+                            class="avatar-state-pulse">
+                        </div>
+
+                    </div>
+
+
+                    <div class="avatar-state-text">
+
+                        <span>
+                            CURRENT STATE
+                        </span>
+
+                        <strong id="avatarStateText">
+                            SYSTEM READY
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= AUDIO ================= -->
+
+            <section
+                class="glass-card audio-card"
+                id="audioCard"
+            >
+
+                <div class="card-label">
+                    AUDIO
+                </div>
+
+                <h2 class="card-title">
+                    Live Voice
+                </h2>
+
+
+                <button
+                    type="button"
+                    class="voice-button"
+                    id="voiceButton"
+                >
+
+                    <span
+                        class="voice-button-icon"
+                        id="voiceButtonIcon"
+                    >
+                        ◉
+                    </span>
+
+                    <span id="voiceButtonText">
+                        START LIVE MODE
+                    </span>
+
+                </button>
+
+
+                <div
+                    class="voice-visualizer"
+                    id="voiceVisualizer"
+                    aria-hidden="true"
+                >
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+            </section>
+
+
+        </aside>
+
+
+        <!-- =================================================
+             CENTER HOLOGRAM
+             ================================================= -->
+
+        <section
+            class="center-stage"
+            id="centerStage"
+        >
+
+
+            <!-- STAGE HEADER -->
+
+            <div
+                class="stage-header"
+                id="stageHeader"
+            >
+
+                <div class="stage-status">
+
+                    <span class="stage-status-dot"></span>
+
+                    <span id="hologramLinkStatus">
+                        HOLOGRAM LINK ACTIVE
+                    </span>
+
+                </div>
+
+
+                <div class="engine-status">
+
+                    <span>
+                        3D ENGINE
+                    </span>
+
+                    <span>
+                        /
+                    </span>
+
+                    <strong id="engineStatus">
+                        ONLINE
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 THREE.JS STAGE
+                 ================================================= -->
+
+            <div
+                class="hologram-stage"
+                id="hologramStage"
+            >
+
+
+                <!-- ACTUAL 3D CANVAS -->
+
+                <canvas
+                    id="holoCanvas"
+                    class="holo-canvas"
+                ></canvas>
+
+
+                <!-- AVATAR LOADER -->
+
+                <div
+                    class="avatar-loader"
+                    id="avatarLoader"
+                >
+
+                    <div class="loader-ring"></div>
+
+                    <div class="loader-text">
+                        INITIALIZING HOLOGRAM
+                    </div>
+
+                    <div
+                        class="loader-progress"
+                        id="loaderProgress"
+                    ></div>
+
+                </div>
+
+
+                <!-- NEURAL HUD -->
+
+                <div
+                    class="holo-hud holo-hud-top"
+                >
+
+                    <span>
+                        NEURAL FIELD
+                    </span>
+
+                    <strong id="neuralFieldStatus">
+                        ACTIVE
+                    </strong>
+
+                </div>
+
+
+                <!-- CORE HUD -->
+
+                <div
+                    class="holo-hud holo-hud-left"
+                >
+
+                    <span>
+                        CORE
+                    </span>
+
+                    <strong id="corePercentage">
+                        98.7%
+                    </strong>
+
+                </div>
+
+
+                <!-- NEURAL STATUS HUD -->
+
+                <div
+                    class="holo-hud holo-hud-right"
+                >
+
+                    <span>
+                        NEURAL
+                    </span>
+
+                    <strong id="neuralPercentage">
+                        ACTIVE
+                    </strong>
+
+                </div>
+
+
+                <!-- HUD BARS -->
+
+                <div
+                    class="holo-hud holo-hud-bottom"
+                >
+
+                    <div
+                        class="hud-bars"
+                        id="hudBars"
+                    >
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HOLOGRAM ID -->
+
+                <div
+                    class="hologram-label"
+                    id="hologramLabel"
+                >
+
+                    <span>
+                        HOLOGRAPHIC ENTITY
+                    </span>
+
+                    <strong>
+                        HIMI
+                    </strong>
+
+                    <span>
+                        AI / CORE 4.0
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RIGHT CHAT PANEL
+             ================================================= -->
+
+        <aside
+            class="right-panel"
+            id="rightPanel"
+        >
+
+
+            <section
+                class="chat-panel"
+                id="chatPanel"
+            >
+
+
+                <!-- CHAT HEADER -->
+
+                <div
+                    class="chat-header"
+                    id="chatHeader"
+                >
+
+                    <div>
+
+                        <div class="card-label">
+                            NEURAL INTERFACE
+                        </div>
+
+                        <h1>
+                            Talk to HIMI
+                        </h1>
+
+                        <p>
+                            Ask anything. Build anything.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="icon-button"
+                        id="newChatButton"
+                        title="New conversation"
+                        aria-label="New conversation"
+                    >
+                        ↻
+                    </button>
+
+                </div>
+
+
+                <!-- =================================================
+                     MESSAGES
+                     ================================================= -->
+
+                <div
+                    class="messages-container"
+                    id="messagesContainer"
+                >
+
+
+                    <!-- INITIAL HIMI MESSAGE -->
+
+                    <div
+                        class="message message-himi"
+                        data-message-type="himi"
+                    >
+
+                        <div class="message-label">
+                            HIMI
+                        </div>
+
+                        <div class="message-content">
+
+                            <p>
+                                Consider me a digital intelligence,
+                                ready to process information, answer
+                                questions, and assist with tasks,
+                                adapting my detail level to your needs —
+                                concise when appropriate, detailed when
+                                required.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =================================================
+                     CHAT COMPOSER
+                     ================================================= -->
+
+                <div
+                    class="chat-compose"
+                    id="chatCompose"
+                >
+
+
+                    <!-- FILE INPUT -->
+
+                    <input
+                        type="file"
+                        id="fileInput"
+                        accept=".pdf,.txt,.doc,.docx,.csv,.json,.py,.js,.html,.css"
+                        hidden
+                    >
+
+
+                    <!-- IMAGE INPUT -->
+
+                    <input
+                        type="file"
+                        id="imageInput"
+                        accept="image/*"
+                        hidden
+                    >
+
+
+                    <div
+                        class="input-wrapper"
+                        id="inputWrapper"
+                    >
+
+
+                        <!-- ATTACHMENT -->
+
+                        <button
+                            type="button"
+                            class="input-icon-button"
+                            id="attachmentButton"
+                            title="Attach file"
+                            aria-label="Attach file"
+                        >
+                            +
+                        </button>
+
+
+                        <!-- MICROPHONE -->
+
+                        <button
+                            type="button"
+                            class="input-icon-button"
+                            id="micButton"
+                            title="Voice input"
+                            aria-label="Voice input"
+                        >
+                            🎙
+                        </button>
+
+
+                        <!-- MESSAGE -->
+
+                        <textarea
+                            id="messageInput"
+                            class="message-input"
+                            rows="1"
+                            placeholder="Message HIMI..."
+                            autocomplete="off"
+                            spellcheck="true"
+                        ></textarea>
+
+
+                        <!-- SEND -->
+
+                        <button
+                            type="button"
+                            class="send-button"
+                            id="sendButton"
+                        >
+
+                            <span>
+                                SEND
+                            </span>
+
+                            <span class="send-arrow">
+                                →
+                            </span>
+
+                        </button>
+
+
+                    </div>
+
+
+                    <!-- ATTACHMENT PREVIEW -->
+
+                    <div
+                        class="attachment-preview"
+                        id="attachmentPreview"
+                        hidden
+                    >
+
+                        <span
+                            id="attachmentInfo">
+                        </span>
+
+                        <button
+                            type="button"
+                            id="removeAttachment"
+                            class="remove-attachment"
+                            aria-label="Remove attachment"
+                        >
+                            ×
+                        </button>
+
+                    </div>
+
+
+                    <div class="compose-hint">
+
+                        <span>
+                            ENTER TO SEND
+                        </span>
+
+                        <span>
+                            MIC FOR VOICE
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+        </aside>
+
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer
+        class="bottom-bar"
+        id="bottomBar"
+    >
+
+        <div>
+            HIMI HOLO AI
+            <span>/</span>
+            NEURAL INTERFACE
+        </div>
+
+
+        <div class="footer-center">
+
+            <span
+                class="footer-dot"
+                id="footerDot">
+            </span>
+
+            <span id="footerStatus">
+                ALL SYSTEMS NOMINAL
+            </span>
+
+        </div>
+
+
+        <div>
+            LOCAL AI CORE
+            <span>/</span>
+            V4.0
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         TOAST
+         ===================================================== -->
+
+    <div
+        class="himi-toast"
+        id="himiToast"
+        role="status"
+        aria-live="polite"
+    >
+
+        <div class="toast-icon">
+            H
+        </div>
+
+        <div class="toast-content">
+
+            <strong id="toastTitle">
+                HIMI
+            </strong>
+
+            <span id="toastMessage">
+                System ready.
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         VOICE OVERLAY
+         ===================================================== -->
+
+    <div
+        class="voice-overlay"
+        id="voiceOverlay"
+        hidden
+    >
+
+        <div class="voice-overlay-core">
+
+            <div
+                class="voice-overlay-ring ring-1">
+            </div>
+
+            <div
+                class="voice-overlay-ring ring-2">
+            </div>
+
+            <div
+                class="voice-overlay-ring ring-3">
+            </div>
+
+            <div class="voice-core">
+                H
+            </div>
+
+        </div>
+
+
+        <div class="voice-overlay-title">
+            HIMI IS LISTENING
+        </div>
+
+
+        <div
+            class="voice-overlay-text"
+            id="voiceOverlayText"
+        >
+            Speak now...
+        </div>
+
+
+        <button
+            type="button"
+            id="stopVoiceButton"
+            class="stop-voice-button"
+        >
+            STOP LISTENING
+        </button>
+
+    </div>
+
+
+</div>
+
+
+<!-- =========================================================
+     ONLY APPLICATION SCRIPT
+
+     script.js imports:
+     ./3D/avatar.js
+
+     avatar.js is NOT loaded separately.
+     ========================================================= -->
+
+<script
+    type="module"
+    src="./script.js">
+</script>
+
+
+</body>
+
+</html>
